@@ -11,6 +11,8 @@
 > **v2.0.0 — Node.js, Claude Code-only rewrite.** Pure Node.js (zero external dependencies,
 > vendored `elkjs` for auto-layout), scoped to Claude Code only — no Python, no Graphviz,
 > no other-agent installers. See the Credits section below for provenance.
+> Python appears below only as an **analysis target** — the importers can visualize
+> Python codebases, but the skill itself never runs Python.
 
 A Claude Code skill that turns natural-language descriptions into `.drawio` XML and exports them to PNG / SVG / PDF / JPG via the native draw.io desktop CLI. It can also turn an **existing codebase** (Python / JS-TS / Go / Rust), **Terraform / Kubernetes / docker-compose infrastructure**, or a **SQL schema** into an auto-laid-out diagram.
 
@@ -323,7 +325,7 @@ Behind the scenes: **check dependencies → plan layout → generate `.drawio` X
 |---|---|---|
 | Self-check after export | ❌ | ✅ reads PNG, auto-fixes 6 issue types |
 | Iterative review loop | ❌ manual re-prompt | ✅ targeted edits, 5-round safety valve |
-| Diagram type presets | ❌ | ✅ 7 presets (ERD, UML, Seq, C4, Arch, ML, Flow) |
+| Diagram type presets | ❌ | ✅ 11 presets (ERD, UML, Seq, C4, Arch, ML, Flow, SysML, BPMN, Network, Swimlane) |
 | Mermaid → editable .drawio | ❌ | ✅ 28 types via native CLI conversion (≥ v30) |
 | Visualize a codebase | ❌ | ✅ import graphs (Py/JS/Go/Rust) + class diagrams |
 | IaC → architecture diagram | ❌ | ✅ Terraform / K8s / compose → official cloud icons |
@@ -346,7 +348,7 @@ Behind the scenes: **check dependencies → plan layout → generate `.drawio` X
 | **Dependencies** | draw.io desktop + Node | draw.io desktop | draw.io desktop (MCP optional) | draw.io plugin + browser |
 | **Self-check + auto-fix** | ✅ 2-round (reads PNG) | ❌ | ✅ validation + strict mode | ❌ screenshot only |
 | **Iterative review** | ✅ 5-round loop | ❌ generate once | ✅ 3 workflows | ❌ |
-| **Diagram presets** | ✅ 7 types | ❌ | ✅ paper-mode classifier | ❌ |
+| **Diagram presets** | ✅ 11 types | ❌ | ✅ paper-mode classifier | ❌ |
 | **Mermaid authoring** | ✅ 28 types (CLI ≥ 30) | ✅ | ❌ | ❌ |
 | **ML/DL diagrams** | ✅ tensor shapes, layer colors | ❌ | ❌ | ❌ |
 | **Color system** | ✅ 7-color semantic | ❌ | ✅ 6 themes | ❌ |
