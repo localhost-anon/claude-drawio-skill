@@ -1,0 +1,65 @@
+{
+  "format_version": "1.0",
+  "terraform_version": "1.7.0",
+  "values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_s3_bucket.logs",
+          "mode": "managed",
+          "type": "aws_s3_bucket",
+          "name": "logs",
+          "index": null,
+          "depends_on": []
+        },
+        {
+          "address": "aws_subnet.this[0]",
+          "mode": "managed",
+          "type": "aws_subnet",
+          "name": "this",
+          "index": 0,
+          "depends_on": []
+        },
+        {
+          "address": "aws_subnet.this[1]",
+          "mode": "managed",
+          "type": "aws_subnet",
+          "name": "this",
+          "index": 1,
+          "depends_on": []
+        },
+        {
+          "address": "aws_lambda_function.processor",
+          "mode": "managed",
+          "type": "aws_lambda_function",
+          "name": "processor",
+          "index": null,
+          "depends_on": ["aws_s3_bucket.logs", "aws_subnet.this"]
+        },
+        {
+          "address": "data.aws_ami.example",
+          "mode": "data",
+          "type": "aws_ami",
+          "name": "example",
+          "index": null,
+          "depends_on": []
+        }
+      ],
+      "child_modules": [
+        {
+          "address": "module.net",
+          "resources": [
+            {
+              "address": "module.net.aws_vpc.this",
+              "mode": "managed",
+              "type": "aws_vpc",
+              "name": "this",
+              "index": null,
+              "depends_on": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

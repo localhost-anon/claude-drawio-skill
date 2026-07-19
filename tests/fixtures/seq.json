@@ -1,0 +1,14 @@
+{
+  "title": "Login flow",
+  "participants": [
+    {"id": "u", "label": "User", "actor": true},
+    {"id": "s", "label": "Server"},
+    {"id": "d", "label": "Database"}
+  ],
+  "messages": [
+    {"from": "u", "to": "s", "label": "POST /login"},
+    {"from": "s", "to": "d", "label": "query user"},
+    {"from": "d", "to": "s", "label": "row", "return": true},
+    {"from": "s", "to": "u", "label": "200 OK", "return": true}
+  ]
+}

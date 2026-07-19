@@ -1,0 +1,10 @@
+{
+  "nodes": [
+    {"id": "n1", "label": "API Gateway", "x": 120, "y": 60, "w": 160, "h": 60,
+     "shape": "rect", "fill": "#dae8fc", "stroke": "#6c8ebf"},
+    {"id": "n2", "label": "Auth DB", "x": 360, "y": 60, "shape": "cylinder"}
+  ],
+  "edges": [
+    {"source": "n1", "target": "n2", "label": "HTTPS", "dashed": false, "arrow": true}
+  ]
+}

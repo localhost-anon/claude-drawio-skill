@@ -1,0 +1,23 @@
+{
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "apps/v1", "kind": "Deployment",
+      "metadata": {"name": "web", "namespace": "default", "labels": {"app": "web"}},
+      "spec": {"template": {"metadata": {"labels": {"app": "web"}},
+        "spec": {"containers": [{"name": "web", "env": [{"name": "DB_URL", "valueFrom": {"secretKeyRef": {"name": "db-secret"}}}],
+          "envFrom": [{"configMapRef": {"name": "web-config"}}],
+          "volumeMounts": []}],
+          "volumes": [{"name": "data", "persistentVolumeClaim": {"claimName": "web-pvc"}}]}}}
+    },
+    {"apiVersion": "v1", "kind": "Service", "metadata": {"name": "web-svc", "namespace": "default"},
+      "spec": {"selector": {"app": "web"}}},
+    {"apiVersion": "v1", "kind": "ConfigMap", "metadata": {"name": "web-config", "namespace": "default"}},
+    {"apiVersion": "v1", "kind": "Secret", "metadata": {"name": "db-secret", "namespace": "default"}},
+    {"apiVersion": "v1", "kind": "PersistentVolumeClaim", "metadata": {"name": "web-pvc", "namespace": "default"}},
+    {"apiVersion": "networking.k8s.io/v1", "kind": "Ingress", "metadata": {"name": "web-ing", "namespace": "default"},
+      "spec": {"rules": [{"http": {"paths": [{"path": "/", "backend": {"service": {"name": "web-svc"}}}]}}]}},
+    {"apiVersion": "autoscaling/v2", "kind": "HorizontalPodAutoscaler", "metadata": {"name": "web-hpa", "namespace": "default"},
+      "spec": {"scaleTargetRef": {"kind": "Deployment", "name": "web"}}}
+  ]
+}

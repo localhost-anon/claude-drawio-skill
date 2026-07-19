@@ -1,0 +1,79 @@
+[
+  {
+    "Id": "aaaaaaaaaaaa1111111111111111111111111111111111111111111111111111",
+    "Name": "/web",
+    "Config": {
+      "Image": "myapp/web:latest",
+      "Labels": {
+        "com.docker.compose.project": "myapp",
+        "com.docker.compose.service": "web",
+        "com.docker.compose.depends_on": "db:service_healthy:false,cache:service_started:false"
+      }
+    },
+    "HostConfig": { "Links": null },
+    "NetworkSettings": {
+      "Networks": {
+        "myapp_frontend": { "Links": null },
+        "bridge": { "Links": null }
+      }
+    },
+    "Mounts": [
+      { "Type": "volume", "Name": "myapp_static", "Source": "/var/lib/docker/volumes/myapp_static/_data" },
+      { "Type": "bind", "Source": "/host/path" }
+    ]
+  },
+  {
+    "Id": "bbbbbbbbbbbb2222222222222222222222222222222222222222222222222222",
+    "Name": "/myapp_db_1",
+    "Config": {
+      "Image": "postgres:15",
+      "Labels": {
+        "com.docker.compose.project": "myapp",
+        "com.docker.compose.service": "db"
+      }
+    },
+    "HostConfig": { "Links": ["/myapp_cache_1:/myapp_db_1/cache"] },
+    "NetworkSettings": {
+      "Networks": {
+        "myapp_backend": { "Links": null }
+      }
+    },
+    "Mounts": [
+      { "Type": "volume", "Name": "myapp_dbdata", "Source": "/var/lib/docker/volumes/myapp_dbdata/_data" }
+    ]
+  },
+  {
+    "Id": "cccccccccccc3333333333333333333333333333333333333333333333333333",
+    "Name": "/myapp_cache_1",
+    "Config": {
+      "Image": "redis:7",
+      "Labels": {
+        "com.docker.compose.project": "myapp",
+        "com.docker.compose.service": "cache"
+      }
+    },
+    "HostConfig": { "Links": null },
+    "NetworkSettings": {
+      "Networks": {
+        "myapp_backend": { "Links": null },
+        "host": { "Links": null }
+      }
+    },
+    "Mounts": []
+  },
+  {
+    "Id": "dddddddddddd4444444444444444444444444444444444444444444444444444",
+    "Name": "/standalone",
+    "Config": {
+      "Image": "alpine:latest",
+      "Labels": {}
+    },
+    "HostConfig": { "Links": null },
+    "NetworkSettings": {
+      "Networks": {
+        "bridge": { "Links": null }
+      }
+    },
+    "Mounts": []
+  }
+]

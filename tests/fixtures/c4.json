@@ -1,0 +1,29 @@
+{
+  "title": "Internet Banking",
+  "levels": [
+    {
+      "name": "System Context",
+      "elements": [
+        {"id": "customer", "type": "person", "label": "Personal Customer", "desc": "A customer of the bank"},
+        {"id": "ibs", "type": "system", "label": "Internet Banking System", "desc": "Lets customers manage accounts", "children": "Containers"},
+        {"id": "email", "type": "external", "label": "E-mail System", "desc": "Microsoft Exchange"}
+      ],
+      "relations": [
+        {"from": "customer", "to": "ibs", "label": "Uses"},
+        {"from": "ibs", "to": "email", "label": "Sends e-mail via"}
+      ]
+    },
+    {
+      "name": "Containers",
+      "elements": [
+        {"id": "spa", "type": "container", "label": "Single-Page App", "tech": "React", "desc": "Banking UI in the browser"},
+        {"id": "api", "type": "container", "label": "API Application", "tech": "Java/Spring"},
+        {"id": "db", "type": "database", "label": "Database", "tech": "PostgreSQL"}
+      ],
+      "relations": [
+        {"from": "spa", "to": "api", "label": "JSON/HTTPS"},
+        {"from": "api", "to": "db", "label": "JDBC"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram name="Page-1">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Five vertices: 4 regular + 1 UserObject-wrapped -->
+        <mxCell id="p1-a" value="A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="80" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p1-b" value="B" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="140" y="20" width="80" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p1-c" value="C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="80" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p1-d" value="D" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="20" y="180" width="80" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- UserObject-wrapped vertex E -->
+        <UserObject label="E" link="data:page/id,p1" id="p1-e">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+            <mxGeometry x="140" y="180" width="80" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+
+        <!-- Four edges -->
+        <mxCell id="e1" edge="1" parent="1" source="p1-a" target="p1-b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e2" edge="1" parent="1" source="p1-b" target="p1-c">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e3" edge="1" parent="1" source="p1-c" target="p1-d">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e4" edge="1" parent="1" source="p1-d" target="p1-e">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="Page-2-Compressed">xVPBTsMwDP0aHydlDgeutNCdJiHxBdFiNZHSJUrdtf17tMYwFSiC027xe3rO85MNuu6mQzbJHaOlAPoFdJ1j5PLqpppCAFTegn4GRAWIgM0Gu19YlUymM/9FkHAnmosJAxXwFXdPBex5DgLmOJwtXWV70NXoPNNbMqcrO2aTQFeOuyC0tKTMNG06WyCxdaDYEecZUH0IinE1r8vRW3YFehTIkW+d9HwQzPSlbj/73kIAbCSHzUzwp0yq+2eC9wyFxC/Zln4fAFUfh3yirzvGJrfE65S/D5spGPaX9R//8A7Y3A5o4Vb39Q4=</diagram>
+</mxfile>

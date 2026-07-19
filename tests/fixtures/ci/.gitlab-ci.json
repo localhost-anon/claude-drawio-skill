@@ -1,0 +1,22 @@
+{
+  "stages": ["build", "test", "deploy"],
+  "variables": { "FOO": "bar" },
+  "compile": {
+    "stage": "build",
+    "script": ["make build"]
+  },
+  "unit-test": {
+    "stage": "test",
+    "script": ["make test"]
+  },
+  "lint": {
+    "stage": "test",
+    "script": ["make lint"],
+    "needs": ["compile"]
+  },
+  "deploy-prod": {
+    "stage": "deploy",
+    "script": ["make deploy"],
+    "needs": [{ "job": "unit-test" }, { "job": "lint" }]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "services": {
+    "web": {
+      "image": "myapp/web:latest",
+      "depends_on": ["api"],
+      "networks": ["frontend"],
+      "volumes": ["cache:/var/cache"]
+    },
+    "api": {
+      "build": {"context": "./api"},
+      "depends_on": {"db": {"condition": "service_healthy"}},
+      "networks": ["frontend", "backend"],
+      "volumes": ["db-data:/data", "./local:/app"]
+    },
+    "db": {
+      "image": "postgres:16",
+      "networks": ["backend"],
+      "volumes": ["db-data:/var/lib/postgresql/data"]
+    },
+    "worker": {
+      "image": "myapp/worker:latest",
+      "links": ["db:database"],
+      "volumes_from": ["api"]
+    }
+  },
+  "volumes": {
+    "db-data": {},
+    "cache": {}
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "direction": "TB",
+  "nodes": [
+    {"id": "web", "label": "Web App", "group": "frontend"},
+    {"id": "api", "label": "API Server", "group": "backend"},
+    {"id": "auth", "label": "Auth Service", "group": "backend"},
+    {"id": "db", "label": "Database", "group": "backend", "width": 100, "height": 50},
+    {"id": "cache", "label": "Cache"}
+  ],
+  "edges": [
+    {"source": "web", "target": "api", "label": "HTTP"},
+    {"source": "api", "target": "auth"},
+    {"source": "api", "target": "db"},
+    {"source": "api", "target": "cache"}
+  ]
+}

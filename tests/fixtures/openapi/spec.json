@@ -1,0 +1,60 @@
+{
+  "openapi": "3.0.0",
+  "info": {"title": "Pet Store", "version": "1.0"},
+  "paths": {
+    "/pets": {
+      "get": {
+        "tags": ["pets"],
+        "summary": "List pets",
+        "responses": {
+          "200": {
+            "content": {"application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/Pet"}}}}
+          }
+        }
+      },
+      "post": {
+        "tags": ["pets"],
+        "operationId": "createPet",
+        "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/NewPet"}}}},
+        "responses": {"201": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Pet"}}}}}
+      }
+    },
+    "/pets/{id}": {
+      "get": {
+        "tags": ["pets"],
+        "summary": "Get pet by id",
+        "responses": {"200": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Pet"}}}}}
+      },
+      "delete": {
+        "summary": "Delete pet",
+        "responses": {"204": {}}
+      }
+    },
+    "/owners": {
+      "get": {
+        "summary": "List owners",
+        "responses": {"200": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Owner"}}}}}
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "integer"},
+          "name": {"type": "string"},
+          "owner": {"$ref": "#/components/schemas/Owner"}
+        }
+      },
+      "NewPet": {
+        "type": "object",
+        "properties": {"name": {"type": "string"}}
+      },
+      "Owner": {
+        "type": "object",
+        "properties": {"id": {"type": "integer"}}
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+name: tests
+
+on:
+  push:
+    paths:
+      - "skills/drawio-skill/scripts/**"
+      - "skills/drawio-skill/data/**"
+      - "skills/drawio-skill/styles/**"
+      - "skills/drawio-skill/SKILL.md"
+      - "tests/**"
+      - ".github/workflows/tests.yml"
+  pull_request:
+    paths:
+      - "skills/drawio-skill/scripts/**"
+      - "skills/drawio-skill/data/**"
+      - "skills/drawio-skill/styles/**"
+      - "skills/drawio-skill/SKILL.md"
+      - "tests/**"
+      - ".github/workflows/tests.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Run tests
+        run: node --test tests/node/*.test.mjs
