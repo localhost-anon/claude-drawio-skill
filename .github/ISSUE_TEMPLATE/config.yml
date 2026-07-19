@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Multi-agent / upstream features
+    url: https://github.com/Agents365-ai/drawio-skill/issues
+    about: This fork is Claude Code-only. Requests for Cursor/Copilot/Codex/OpenClaw support belong in the upstream project.

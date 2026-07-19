@@ -1,0 +1,50 @@
+name: Bug report
+description: A script errors, produces a broken diagram, or behaves unexpectedly
+labels: [bug]
+body:
+  - type: input
+    id: command
+    attributes:
+      label: Exact command
+      description: The full command you ran (e.g. `node scripts/autolayout.mjs graph.json -o out.drawio`)
+      placeholder: node scripts/…
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Full output — stdout, stderr, and exit code if known. Attach or paste the broken diagram/PNG if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal input to reproduce
+      description: The smallest input file (graph JSON, .drawio, SQL, etc.) that triggers the bug. Strip anything private — never paste real infrastructure configs.
+      render: text
+  - type: input
+    id: node-version
+    attributes:
+      label: Node version
+      placeholder: node --version
+    validations:
+      required: true
+  - type: input
+    id: drawio-version
+    attributes:
+      label: draw.io CLI version (if export-related)
+      placeholder: drawio --version
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: macOS 15 / Ubuntu 24.04 / Windows 11
+    validations:
+      required: true

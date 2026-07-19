@@ -1,0 +1,35 @@
+name: Feature request
+description: Suggest a new capability or improvement
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Scope check first:** this project is Claude Code-only and zero-dependency
+        (Node stdlib + vendored elkjs). Requests to support other agents, or features
+        requiring npm dependencies, are out of scope — see CONTRIBUTING.md.
+        Multi-agent features belong upstream at Agents365-ai/drawio-skill.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / use case
+      description: What are you trying to do that the skill can't do today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What should the skill do? A sketch of the CLI (`node scripts/foo.mjs …`) helps.
+    validations:
+      required: true
+  - type: dropdown
+    id: zero-dep
+    attributes:
+      label: Can this be built zero-dependency?
+      options:
+        - "Yes — Node stdlib is enough"
+        - "Probably — may need a small vendored file"
+        - "Unsure"
+    validations:
+      required: true
